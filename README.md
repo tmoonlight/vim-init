@@ -30,6 +30,7 @@ source ~/.vim/vim-init/init.vim
 ##（从gitee下载YouCompleteMe，解决github下载慢的问题，已克隆YouCompleteMe的仓库及子模块到gitee上，2020年3月7日10:22:24）
 ```bash
 sudo apt-get install cmake
+sudo apt-get install python3-dev
 cd ~/.vim/bundles
 git clone https://gitee.com/zhuixixi/YouCompleteMe.git --depth=1
 cd ~/.vim/bundles/YouCompleteMe
