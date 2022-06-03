@@ -37,6 +37,28 @@ source ~/.vim/vim-init/init.vim
 
 然后启动 Vim，在命令行运行 `:PlugInstall` 安装依赖插件即可。
 
+## 安装插件
+然后启动 Vim，在命令行运行 `:PlugInstall` 安装依赖插件即可。
+
+## 手动安装YouCompleteMe 
+##（从gitee下载YouCompleteMe，解决github下载慢的问题，已克隆YouCompleteMe的仓库及子模块到gitee上，2020年3月7日10:22:24）
+```bash
+sudo apt-get install cmake
+cd ~/.vim/bundles
+git clone https://gitee.com/zhuixixi/YouCompleteMe.git --depth=1
+cd ~/.vim/bundles/YouCompleteMe
+python3 install.py --clang-completer
+```
+
+## 安装插件需要的第三方工具
+```bash
+sudo apt-get install clang-format-6.0
+sudo apt-get install silversearcher-ag ctags
+
+// clang-format建软连接
+cd /usr/bin
+sudo ln -s clang-format-6.0 clang-format
+
 # 结构
 
 本配置按顺序，由如下几个主要模块组成：
