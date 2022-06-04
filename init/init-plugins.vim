@@ -169,6 +169,9 @@ if index(g:bundle_group, 'enhanced') >= 0
 
 	" 提供 gist 接口
 	Plug 'lambdalisue/vim-gista', { 'on': 'Gista' }
+
+	" youcomplete"
+	" :Plug 'ycm-core/YouCompleteMe'
 	
 	" ALT_+/- 用于按分隔符扩大缩小 v 选区
 	map <m-=> <Plug>(expand_region_expand)
