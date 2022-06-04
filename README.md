@@ -45,8 +45,10 @@ sudo apt-get install silversearcher-ag ctags
 // clang-format建软连接
 cd /usr/bin
 sudo ln -s clang-format-6.0 clang-format
+```
 
-## 以下两行添加到.vimrc以加载clang代码提示：
+## c++支持：
+以下两行添加到.vimrc以加载clang代码提示
 ```VimL
 let g:ycm_global_ycm_extra_conf = '~/.vim/vim-init/tools/conf/.ycm_extra_conf.py'
 
