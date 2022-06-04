@@ -46,6 +46,13 @@ sudo apt-get install silversearcher-ag ctags
 cd /usr/bin
 sudo ln -s clang-format-6.0 clang-format
 
+## 以下两行添加到.vimrc以加载clang代码提示：
+```VimL
+let g:ycm_global_ycm_extra_conf = '~/.vim/vim-init/tools/conf/.ycm_extra_conf.py'
+
+set runtimepath+=~/.vim/bundles/YouCompleteMe
+```
+
 # 结构
 
 本配置按顺序，由如下几个主要模块组成：
