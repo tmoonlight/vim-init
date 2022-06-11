@@ -18,12 +18,15 @@
 "let mapleader=" "
 
 "----------------------------------------------------------------------
-" INSERT 模式下使用 windows 键位
+" Extra Config
 "----------------------------------------------------------------------
-
-"imapclear <end>
-"inoremap <c-a> <home>
-"inoremap <end> sdsdÏasdFfsdfdf
+inoremap <c-_> <esc><c-o>i
+"imapclear <enfdsdf>
+inoremap <c-=> <esc><c-i>i
+nnoremap <F12> <esc>:YcmCompleter GoTo<cr>:
+nnoremap <c-_>  :hello
+"inoremap <eecho "test123" echo "test123" echo "test123" echo "test123" echo
+""test123"echo "test123 nd> sdsdÏasdFfsdfdf
 "inoremap <c-d> :echo "deleted!":echo "deleted!":echo "deleted!"
 "inoremap <c-_> echo "test123" 
 
@@ -135,7 +138,8 @@ noremap <silent> <leader>bp :bp<cr>
 " TAB：创建，关闭，上一个，下一个，左移，右移
 " 其实还可以用原生的 CTRL+PageUp, CTRL+PageDown 来切换标签
 "----------------------------------------------------------------------
-
+nnoremap <c-s> :w<cr>
+noremap <silent> <m-t> :tabnew . <cr>
 noremap <silent> <leader>tc :tabnew<cr>
 noremap <silent> <leader>tq :tabclose<cr>
 noremap <silent> <leader>tn :tabnext<cr>
@@ -220,7 +224,7 @@ elseif has('nvim')
 	tnoremap <m-L> <c-\><c-n><c-w>l
 	tnoremap <m-J> <c-\><c-n><c-w>j
 	tnoremap <m-K> <c-\><c-n><c-w>k
-	tnoremap <m-q> <c-\><c-n>
+tnoremap <m-q> <c-\><c-n>
 endif
 
 
@@ -240,26 +244,24 @@ let g:asyncrun_bell = 1
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
 
 " F9 编译 C/C++ 文件
-nnoremap <silent> <F9> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+nnoremap <silent> <F9> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" -lstdc++ <cr>
 
-" F5 运行文件
-nnoremap <silent> <F5> :call ExecuteFile()<cr>
+" F6 编译项目
+nnoremap <silent> <F6> :AsyncRun -cwd=<root> make <cr>
 
-" F7 编译项目
-nnoremap <silent> <F7> :AsyncRun -cwd=<root> make <cr>
+" F5 运行项目
+nnoremap <silent> <F5> :AsyncRun -cwd=<root> -raw make run <cr>
 
-" F8 运行项目
-nnoremap <silent> <F8> :AsyncRun -cwd=<root> -raw make run <cr>
-
-" F6 测试项目
-nnoremap <silent> <F6> :AsyncRun -cwd=<root> -raw make test <cr>
+" F7 测试项目
+nnoremap <silent> <F7> :AsyncRun -cwd=<root> -raw make test <cr>
 
 " 更新 cmake
 nnoremap <silent> <F4> :AsyncRun -cwd=<root> cmake . <cr>
 
+nnoremap <silent> <F3> <esc>:tabdo w <cr> :mks! <cr>
 " Windows 下支持直接打开新 cmd 窗口运行
 if has('win32') || has('win64')
-	nnoremap <silent> <F8> :AsyncRun -cwd=<root> -mode=4 make run <cr>
+nnoremap <silent> <F8> :AsyncRun -cwd=<root> -mode=4 make run <cr>
 endif
 
 
@@ -267,8 +269,8 @@ endif
 " F5 运行当前文件：根据文件类型判断方法，并且输出到 quickfix 窗口
 "----------------------------------------------------------------------
 function! ExecuteFile()
-	let cmd = ''
-	if index(['c', 'cpp', 'rs', 'go'], &ft) >= 0
+let cmd = ''
+if index(['c', 'cpp', 'rs', 'go'], &ft) >= 0
 		" native 语言，把当前文件名去掉扩展名后作为可执行运行
 		" 写全路径名是因为后面 -cwd=? 会改变运行时的当前路径，所以写全路径
 		" 加双引号是为了避免路径中包含空格
