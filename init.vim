@@ -51,7 +51,7 @@ call append(11,"#endif // ".toupper(a:ClassName)."_H")
 :execute 'write' header
 let src = a:ClassName.".cpp"
 :vsp %:h/.cpp
-call append(0,"#include ".a:ClassName.".h")
+call append(0,"#include \"".a:ClassName.".h\"")
 call append(1," ")
 call append(2,a:ClassName."::".a:ClassName."()")
 call append(3,"{")
