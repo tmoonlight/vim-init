@@ -35,7 +35,8 @@ let mapleader=","
 "
 function! Class(ClassName)
 let header = a:ClassName.".h"
-:vsp %:h/.h
+":vsp %:h/.h
+:execute 'vsp' header
 call append(0,"#ifndef ".toupper(a:ClassName)."_H")
 call append(1,"#define ".toupper(a:ClassName)."_H")
 call append(2," ")
@@ -50,7 +51,8 @@ call append(10, "};")
 call append(11,"#endif // ".toupper(a:ClassName)."_H")
 :execute 'write' header
 let src = a:ClassName.".cpp"
-:vsp %:h/.cpp
+":vsp %:h/.cpp
+:execute 'vsp' src
 call append(0,"#include \"".a:ClassName.".h\"")
 call append(1," ")
 call append(2,a:ClassName."::".a:ClassName."()")

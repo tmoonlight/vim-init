@@ -23,7 +23,7 @@
 inoremap <c-_> <esc><c-o>i
 "imapclear <enfdsdf>
 inoremap <c-=> <esc><c-i>i
-nnoremap <F12> <esc>:YcmCompleter GoTo<cr>:
+nnoremap <F12> <esc>:YcmCompleter GoTo<cr>
 nnoremap <c-_>  :hello
 "inoremap <eecho "test123" echo "test123" echo "test123" echo "test123" echo
 ""test123"echo "test123 nd> sdsdÏasdFfsdfdf
